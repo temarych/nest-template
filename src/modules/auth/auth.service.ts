@@ -14,9 +14,10 @@ import {
   ISignUpData,
   ISignUpResult,
 } from './auth.service.types';
+import { IAuthService } from './auth.service.interface';
 
 @Injectable()
-export class AuthService {
+export class AuthService implements IAuthService {
   constructor(
     private userService: UserService,
     private jwtService: JwtService,
