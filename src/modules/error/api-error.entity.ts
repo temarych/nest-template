@@ -12,5 +12,6 @@ export class ApiError extends Error implements IApiError {
     const data = apiErrorMap[code];
     super(options?.message ?? data.message);
     this.code = code;
+    this.status = options?.status ?? data.status;
   }
 }
