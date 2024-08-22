@@ -22,7 +22,5 @@
       "@typings/*": ["./src/typings/*"],
       "@/*": ["./src/*"]
     }
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  }
 }

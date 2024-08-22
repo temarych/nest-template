@@ -17,6 +17,7 @@ export class UserController {
   @ApiOperation({
     summary: 'Get the current user',
     operationId: 'getMe',
+    tags: ['user'],
   })
   @ApiSecurity('bearer')
   @ApiOkResponse({ type: UserDto })
