@@ -7,10 +7,10 @@ import {
 } from '@nestjs/swagger';
 import { ApiErrorDto } from '@modules/error/api-error.dto';
 import { AuthService } from './auth.service';
-import { SignUpRequestDto } from './dto/signup.request.dto';
-import { LogInRequestDto } from './dto/login.request.dto';
-import { SignUpResponseDto } from './dto/signup.response.dto';
-import { LogInResponseDto } from './dto/login.response.dto';
+import { SignupRequestDto } from './dto/signup.request.dto';
+import { LoginRequestDto } from './dto/login.request.dto';
+import { SignupResponseDto } from './dto/signup.response.dto';
+import { LoginResponseDto } from './dto/login.response.dto';
 
 @Controller()
 export class AuthController {
@@ -22,12 +22,12 @@ export class AuthController {
     operationId: 'signup',
     tags: ['auth'],
   })
-  @ApiOkResponse({ type: SignUpResponseDto })
+  @ApiOkResponse({ type: SignupResponseDto })
   @ApiUnauthorizedResponse({ type: ApiErrorDto })
   @ApiBadRequestResponse({ type: ApiErrorDto })
-  public async signUp(@Body() data: SignUpRequestDto) {
+  public async signUp(@Body() data: SignupRequestDto) {
     const result = await this.authService.signUp(data);
-    return SignUpResponseDto.fromResult(result!);
+    return SignupResponseDto.fromResult(result!);
   }
 
   @Post('login')
@@ -36,11 +36,11 @@ export class AuthController {
     operationId: 'login',
     tags: ['auth'],
   })
-  @ApiOkResponse({ type: LogInResponseDto })
+  @ApiOkResponse({ type: LoginResponseDto })
   @ApiUnauthorizedResponse({ type: ApiErrorDto })
   @ApiBadRequestResponse({ type: ApiErrorDto })
-  public async logIn(@Body() data: LogInRequestDto) {
+  public async logIn(@Body() data: LoginRequestDto) {
     const result = await this.authService.logIn(data);
-    return LogInResponseDto.fromResult(result!);
+    return LoginResponseDto.fromResult(result!);
   }
 }
