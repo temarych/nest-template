@@ -1,10 +1,4 @@
-import {
-  Body,
-  ClassSerializerInterceptor,
-  Controller,
-  Post,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiOkResponse,
@@ -18,12 +12,11 @@ import { LogInRequestDto } from './dto/login.request.dto';
 import { SignUpResponseDto } from './dto/signup.response.dto';
 import { LogInResponseDto } from './dto/login.response.dto';
 
-@Controller('auth')
-@UseInterceptors(ClassSerializerInterceptor)
+@Controller()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('/signup')
+  @Post('signup')
   @ApiOperation({
     summary: 'Sign up',
     operationId: 'signup',
@@ -37,7 +30,7 @@ export class AuthController {
     return SignUpResponseDto.fromResult(result!);
   }
 
-  @Post('/login')
+  @Post('login')
   @ApiOperation({
     summary: 'Log in',
     operationId: 'login',
