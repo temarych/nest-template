@@ -20,7 +20,7 @@ export class AuthController {
   @ApiOperation({
     summary: 'Sign up',
     operationId: 'signup',
-    tags: ['auth'],
+    tags: ['user'],
   })
   @ApiOkResponse({ type: SignupResponseDto })
   @ApiUnauthorizedResponse({ type: ApiErrorDto })
@@ -34,7 +34,7 @@ export class AuthController {
   @ApiOperation({
     summary: 'Log in',
     operationId: 'login',
-    tags: ['auth'],
+    tags: ['user'],
   })
   @ApiOkResponse({ type: LoginResponseDto })
   @ApiUnauthorizedResponse({ type: ApiErrorDto })
